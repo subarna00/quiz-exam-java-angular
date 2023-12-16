@@ -8,14 +8,19 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userRoleId;
-
-    public UserRole() {
-    }
-
     //    user
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+    @ManyToOne
+    private Role role;
 
+    public UserRole() {
+    }
+    public UserRole(Long userRoleId, User user, Role role) {
+        this.userRoleId = userRoleId;
+        this.user = user;
+        this.role = role;
+    }
     public Long getUserRoleId() {
         return userRoleId;
     }
@@ -23,7 +28,6 @@ public class UserRole {
     public void setUserRoleId(Long userRoleId) {
         this.userRoleId = userRoleId;
     }
-
     public User getUser() {
         return user;
     }
@@ -40,6 +44,5 @@ public class UserRole {
         this.role = role;
     }
 
-    @ManyToOne
-    private Role role;
+
 }
